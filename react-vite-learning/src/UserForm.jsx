@@ -1,35 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import "./index.css";
 
-function UserForm({ addUser }) {
-  const [fname, setFname] = useState("");
+function UserForm({ saveUser, editUser}) {
+  const [formData, setFormData]= useState({
+
+fname: "",
+lname: "",
+gender: "",
+nationality: "",
+edlevel: "",
+gpa: "",
+school: "",
+city: "",
+dob: "",
+major: "",
+email: "",
+phone: "",
+street: "",
+state: ""
+
+  });
+
   const [fnameError, setFnameError] = useState("");
-  const [lname, setLname] = useState("");
   const [lnameError,setLnameError]=useState("");
-  const [dob, setDob] = useState("");
   const [dobError, setDobError] = useState("");
-  const [gender, setGender] = useState("");
   const [genderError, setGenderError] = useState("");
-  const [nationality, setNationality] = useState("");
   const [nationalityError, setNationalityError] = useState("");
-  const [edlevel, setEdlevel] = useState("");
   const [edlevelError, setEdlevelError] = useState("");
-  const [major, setMajor] = useState("");
   const [majorError, setMajorError] = useState("");
-  const [gpa, setGpa] = useState("");
   const [gpaError, setGpaError] = useState("");
-  const [school, setSchool] = useState("");
   const [schoolError, setSchoolError] = useState("");
-  const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-  const [street, setStreet] = useState("");
   const [streetError, setStreetError] = useState("");
-  const [city, setCity] = useState("");
   const [cityError, setCityError] = useState("");
-  const [state, setState] = useState("");
   const [stateError, setStateError] = useState("");
-  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+
+
 
 //input validation
 
@@ -70,7 +77,7 @@ function UserForm({ addUser }) {
 
 const validateDob =(value) =>{
 
-if (value==""){
+if (value===""){
   setDobError("dob cannot be empty.")
   return false;
 }  else {
@@ -174,7 +181,7 @@ let dmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i;
 
 const validateEmail =(value) =>{
 
-  if (value==""){
+  if (value===""){
     setEmailError("email cannot be empty.")
     return false;
   } else if(!dmail.test(value)){
@@ -192,7 +199,7 @@ const validateEmail =(value) =>{
 
   const validatePhone =(value) =>{
 
-    if (value==""){
+    if (value===""){
       setPhoneError("mobile no. cannot be empty.")
       return false;
     } else if(!contactno.test(value)){
@@ -250,10 +257,21 @@ const validateEmail =(value) =>{
       }
     }
 
-  
 
 
+  useEffect ( ()=> {
+if(editUser) {
+setFormData(editUser);
+}
+  },[editUser]);
 
+
+const handleChange =(e) =>{
+setFormData({
+  ...formData,
+  [e.target.name]: e.target.value,
+});
+};
 
 
 
@@ -275,20 +293,20 @@ const validateEmail =(value) =>{
   //   return;
   // }
 
-const isFnameValid= validateFname(fname);
-const isLnameValid=validateLname(lname);
-const isDobValid=validateDob(dob);
-const isGenderValid=validateGender(gender);
-const isNationalityValid= validateNationality(nationality);
-const isEdlevelValid= validateEdlevel(edlevel);
-const isMajorValid = validateMajor(major);
-const isGpaValid= validateGpa(gpa);
-const isSchoolValid= validateSchool(school);
-const isPhoneValid= validatePhone(phone);
-const isStreetValid=validateStreet(street);
-const isCityValid= validateCity(city);
-const isStateValid= validateState(state);
-const isEmailValid= validateEmail(email);
+const isFnameValid= validateFname(formData.fname);
+const isLnameValid=validateLname(formData.lname);
+const isDobValid=validateDob(formData.dob);
+const isGenderValid=validateGender(formData.gender);
+const isNationalityValid= validateNationality(formData.nationality);
+const isEdlevelValid= validateEdlevel(formData.edlevel);
+const isMajorValid = validateMajor(formData.major);
+const isGpaValid= validateGpa(formData.gpa);
+const isSchoolValid= validateSchool(formData.school);
+const isPhoneValid= validatePhone(formData.phone);
+const isStreetValid=validateStreet(formData.street);
+const isCityValid= validateCity(formData.city);
+const isStateValid= validateState(formData.state);
+const isEmailValid= validateEmail(formData.email);
 
 
 
@@ -306,44 +324,31 @@ const isEmailValid= validateEmail(email);
 
 
 
+saveUser(formData);
+
+
+setFormData({
+  fname: "",
+  lname: "",
+  gender: "",
+  nationality: "",
+  edlevel: "",
+  gpa: "",
+  school: "",
+  city: "",
+  dob: "",
+  major: "",
+  email: "",
+  phone: "",
+  street: "",
+  state: "",
+})
 
 
 
+    
 
-
-
-
-    addUser({
-      fname,
-      lname,
-      dob,
-      gender,
-      nationality,
-      edlevel,
-      major,
-      gpa,
-      school,
-      phone,
-      street,
-      city,
-      state,
-      email,
-    });
-
-    setFname("");
-    setLname("");
-    setEmail("");
-    setDob("");
-    setGender("");
-    setNationality("");
-    setEdlevel("");
-    setMajor("");
-    setGpa("");
-    setSchool("");
-    setPhone("");
-    setStreet("");
-    setCity("");
-    setState("");
+    
   };
 
   return (
@@ -358,9 +363,10 @@ const isEmailValid= validateEmail(email);
 
         <input
           type="text"
+          name="fname"
           placeholder="First Name"
-          value={fname}
-          onChange={(e) => {setFname(e.target.value)
+          value={formData.fname}
+          onChange={(e) => {handleChange(e)
                             validateFname(e.target.value)}}
         />
         <div className="error-message">
@@ -374,9 +380,10 @@ const isEmailValid= validateEmail(email);
 
         <input
           type="text"
+          name="lname"
           placeholder="Last Name"
-          value={lname}
-          onChange={(e) => {setLname(e.target.value) 
+          value={formData.lname}
+          onChange={(e) => {handleChange(e)
                             validateLname(e.target.value)}}
         />
       <div className="error-message" >{lnameError}</div>
@@ -389,9 +396,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="dob">Date of Birth: </label>
         <input
           type="date"
+          name="dob"
           placeholder="dd/mm/yy"
-          value={dob}
-          onChange={(e) => {setDob(e.target.value)
+          value={formData.dob}
+          onChange={(e) => {handleChange(e)
                             validateDob(e.target.value)}}
         />
         <div className="error-message" >{dobError}</div>
@@ -402,8 +410,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="gender">Gender: </label>
 
         <select
-          placeholder="gender" value={gender}
-          onChange={(e) => {setGender(e.target.value)
+        name="gender"
+          placeholder="gender"
+           value={formData.gender}
+          onChange={(e) => {handleChange(e)
                             validateGender(e.target.value)}}
           >
           <option value="" disabled >
@@ -422,9 +432,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="nationality">Nationality: </label>
         <input
           type="text"
+          name="nationality"
           placeholder="nationality"
-          value={nationality}
-          onChange={(e) => {setNationality(e.target.value)
+          value={formData.nationality}
+          onChange={(e) => {handleChange(e)
                             validateNationality(e.target.value)}}
         />
         <div className="error-message" >{nationalityError}</div>
@@ -434,8 +445,9 @@ const isEmailValid= validateEmail(email);
 
         <label htmlFor="edlevel">Education Level: </label>
         <select
-          value={edlevel}
-          onChange={(e) => {setEdlevel(e.target.value)
+        name="edlevel"
+          value={formData.edlevel}
+          onChange={(e) => {handleChange(e)
                             validateEdlevel(e.target.value)}}
            >
           <option value="" disabled >
@@ -455,9 +467,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="study">major: </label>
         <input
           type="text"
+          name="major"
           placeholder="e.g.,computer science"
-          value={major}
-          onChange={(e) => {setMajor(e.target.value)
+          value={formData.major}
+          onChange={(e) => {handleChange(e)
                            validateMajor(e.target.value)}}
         />
         <div className="error-message" >{majorError}</div>
@@ -468,9 +481,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="gpa">gpa: </label>
         <input
           type="text"
+          name="gpa"
           placeholder="e.g.,3.8"
-          value={gpa}
-          onChange={(e) => {setGpa(e.target.value)
+          value={formData.gpa}
+          onChange={(e) => {handleChange(e)
                             validateGpa(e.target.value)}}
         />
         <div className="error-message" >{gpaError}</div>
@@ -482,9 +496,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="email">Email Address: </label>
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => {setEmail(e.target.value)
+          value={formData.email}
+          onChange={(e) => {handleChange(e)
                             validateEmail(e.target.value)}}
         />
         <div className="error-message" >{emailError}</div>
@@ -494,9 +509,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="school">school: </label>
         <input
           type="text"
+          name="school"
           placeholder="school"
-          value={school}
-          onChange={(e) => {setSchool(e.target.value)
+          value={formData.school}
+          onChange={(e) => {handleChange(e)
                             validateSchool(e.target.value)}}
         />
         <div className="error-message" >{schoolError}</div>
@@ -508,9 +524,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="phone">mobile no: </label>
         <input
           type="tel"
+          name="phone"
           placeholder="+1(555)123-4567"
-          value={phone}
-          onChange={(e) => {setPhone(e.target.value)
+          value={formData.phone}
+          onChange={(e) => {handleChange(e)
                             validatePhone(e.target.value)}}
         />
         <div className="error-message" >{phoneError}</div>
@@ -520,9 +537,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="street">street: </label>
         <input
           type="text"
+          name="street"
           placeholder="123 main street"
-          value={street}
-          onChange={(e) => {setStreet(e.target.value)
+          value={formData.street}
+          onChange={(e) => {handleChange(e)
                             validateStreet(e.target.value)}}
         />
         <div className="error-message" >{streetError}</div>
@@ -534,9 +552,10 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="city">city: </label>
         <input
           type="text"
+          name="city"
           placeholder="enter city"
-          value={city}
-          onChange={(e) => {setCity(e.target.value)
+          value={formData.city}
+          onChange={(e) => {handleChange(e)
                             validateCity(e.target.value)}}
         />
         <div className="error-message" >{cityError}</div>
@@ -546,16 +565,19 @@ const isEmailValid= validateEmail(email);
         <label htmlFor="state">state: </label>
         <input
           type="text"
+          name="state"
           placeholder="enter state"
-          value={state}
-          onChange={(e) => {setState(e.target.value)
+          value={formData.state}
+          onChange={(e) => {handleChange(e)
                             validateState(e.target.value)}}
         />
         <div className="error-message" >{stateError}</div>
         </div>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit">
+{editUser ? "Update": "Register"}
+</button>
     </form>
     </div>
   );

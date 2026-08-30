@@ -1,4 +1,4 @@
-function UserTable({ users }) {
+function UserTable({ users,deleteUser,editUser }) {
     return (
       <div class="table-container">
       <table border="1">
@@ -18,6 +18,7 @@ function UserTable({ users }) {
             <th>Email</th>
             <th>street</th>
             <th>state</th>
+            <th>Actions</th>
           </tr>
         </thead>
   
@@ -38,6 +39,11 @@ function UserTable({ users }) {
               <td>{user.email}</td>
               <td>{user.street}</td>
               <td>{user.state}</td>
+              <td>
+                <button onClick={()=> editUser(index)}>Edit</button>
+<br></br>
+                <button onClick={() => deleteUser(index)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
