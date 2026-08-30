@@ -4,6 +4,8 @@ function UserTable({ users,deleteUser,editUser }) {
       <table border="1">
         <thead>
           <tr>
+            <th>Serial No.</th>
+            
             <th>First Name</th>
             <th>Last Name</th>
             <th>gender</th>
@@ -25,6 +27,8 @@ function UserTable({ users,deleteUser,editUser }) {
         <tbody>
           {users.map((user, index) => (
             <tr key={index}>
+              <td>{index +1}</td>
+
               <td>{user.fname}</td>
               <td>{user.lname}</td>
               <td>{user.gender}</td>
@@ -41,7 +45,7 @@ function UserTable({ users,deleteUser,editUser }) {
               <td>{user.state}</td>
               <td>
                 <button onClick={()=> editUser(index)}>Edit</button>
-<br></br>
+                  <br></br>
                 <button onClick={() => deleteUser(index)}>Delete</button>
               </td>
             </tr>
