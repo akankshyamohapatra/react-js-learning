@@ -1,11 +1,19 @@
-function UserTable({ users,deleteUser,editUser }) {
+import { useContext } from "react";
+import { UserContext } from "./context/userContext";
+
+
+function UserTable() {
+
+const {users,deleteUser,editUser} = useContext(UserContext);
+
+
     return (
-      <div class="table-container">
+      <div className="table-container">
       <table border="1">
         <thead>
           <tr>
             <th>Serial No.</th>
-            
+
             <th>First Name</th>
             <th>Last Name</th>
             <th>gender</th>

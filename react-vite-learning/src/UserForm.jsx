@@ -1,7 +1,16 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect,useContext} from "react";
 import "./index.css";
+import { UserContext } from "./context/userContext";
 
-function UserForm({ saveUser, editUser}) {
+function UserForm() {
+
+  const {saveUser,users,editIndex}= useContext(UserContext)
+
+
+
+
+
+
   const [formData, setFormData]= useState({
 
 fname: "",
@@ -260,10 +269,10 @@ const validateEmail =(value) =>{
 
 
   useEffect ( ()=> {
-if(editUser) {
-setFormData(editUser);
+if(editIndex !== null) {
+setFormData(users[editIndex]);
 }
-  },[editUser]);
+  },[editIndex,users]);
 
 
 const handleChange =(e) =>{
@@ -576,7 +585,7 @@ setFormData({
       </div>
 
       <button type="submit">
-{editUser ? "Update": "Register"}
+{editIndex !== null ? "Update": "Register"}
 </button>
     </form>
     </div>
