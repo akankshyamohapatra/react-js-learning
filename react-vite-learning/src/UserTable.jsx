@@ -8,53 +8,53 @@ const {users,deleteUser,editUser} = useContext(UserContext);
 
 
     return (
-      <div className="table-container">
-      <table border="1">
+      <div className="w-[1000px] overflow-x-auto">
+      <table className="w-max border-collapse bg-white">
         <thead>
           <tr>
-            <th>Serial No.</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">Serial No.</th>
 
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>gender</th>
-            <th>nationality</th>
-            <th>education level</th>
-            <th>gpa</th>
-            <th>school</th>
-            <th>city</th>
-            <th>dob</th>
-            <th>major</th>
-            <th>mobileno.</th>
-            <th>Email</th>
-            <th>street</th>
-            <th>state</th>
-            <th>Actions</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">First Name</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">Last Name</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">gender</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">nationality</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">education level</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">gpa</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">school</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">city</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">dob</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">major</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">mobileno.</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">Email</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">street</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">state</th>
+            <th className="py-2 px-3 border border-red-500 whitespace-nowrap ">Actions</th>
           </tr>
         </thead>
   
         <tbody>
           {users.map((user, index) => (
             <tr key={index}>
-              <td>{index +1}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{index +1}</td>
 
-              <td>{user.fname}</td>
-              <td>{user.lname}</td>
-              <td>{user.gender}</td>
-              <td>{user.nationality}</td>
-              <td>{user.edlevel}</td>
-              <td>{user.gpa}</td>
-              <td>{user.school}</td>
-              <td>{user.city}</td>
-              <td>{user.dob}</td>
-              <td>{user.major}</td>
-              <td>{user.phone}</td>
-              <td>{user.email}</td>
-              <td>{user.street}</td>
-              <td>{user.state}</td>
-              <td>
-                <button onClick={()=> editUser(index)}>Edit</button>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.fname}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.lname}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.gender}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.nationality}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.edlevel}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.gpa}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.school}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.city}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.dob}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.major}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.phone}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.email}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.street}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.state}</td>
+              <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">
+                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer" onClick={()=> editUser(index)}>Edit</button>
                   <br></br>
-                <button onClick={() => deleteUser(index)}>Delete</button>
+                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer" onClick={() => deleteUser(index)}>Delete</button>
               </td>
             </tr>
           ))}

@@ -361,16 +361,16 @@ setFormData({
   };
 
   return (
-    <div className="container">
+    <div className="bg-white px-10 py-[30px] rounded-[10px] shadow-lg max-w-[800px] w-full">
     <form onSubmit={handleSubmit}>
-      <h2>Student Registration Form</h2>
+      <h2 className="text-[24px] leading-[118%] tracking-[-0.24px] mb-5 text-center max-[1024px]:text-[20px]">Student Registration Form</h2>
 
-      <div className="row">
+      <div className="flex gap-5 max-[600px]:flex-col">
 
-        <div className=" form-group ">
-        <label htmlFor="fname">First Name: </label>
+        <div className="flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="fname">First Name: </label>
 
-        <input
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="fname"
           placeholder="First Name"
@@ -378,16 +378,16 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateFname(e.target.value)}}
         />
-        <div className="error-message">
+        <div className="text-red-500 text-[0.9em] min-h-[1em]">
   {fnameError}
 </div>
         </div>
 
 
-        <div className=" form-group">
-        <label htmlFor="lname">Last Name: </label>
+        <div className=" flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="lname">Last Name: </label>
 
-        <input
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="lname"
           placeholder="Last Name"
@@ -395,15 +395,15 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateLname(e.target.value)}}
         />
-      <div className="error-message" >{lnameError}</div>
+      <div className="text-red-500 text-[0.9em] min-h-[1em]" >{lnameError}</div>
         
         </div>
       </div>
 
-      <div className="row">
-      <div className=" form-group ">
-        <label htmlFor="dob">Date of Birth: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+      <div className=" flex flex-col mb-[15px] flex-[3] ">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start " htmlFor="dob">Date of Birth: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="date"
           name="dob"
           placeholder="dd/mm/yy"
@@ -411,14 +411,14 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateDob(e.target.value)}}
         />
-        <div className="error-message" >{dobError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{dobError}</div>
         </div>
         
         
-        <div className=" form-group">
-        <label htmlFor="gender">Gender: </label>
+        <div className=" flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start " htmlFor="gender">Gender: </label>
 
-        <select
+        <select className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
         name="gender"
           placeholder="gender"
            value={formData.gender}
@@ -432,14 +432,14 @@ setFormData({
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-        <div className="error-message" >{genderError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{genderError}</div>
         </div>
       </div>
 
-      <div className="row">
-        <div className="form-group">
-        <label htmlFor="nationality">Nationality: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+        <div className="flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start " htmlFor="nationality">Nationality: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="nationality"
           placeholder="nationality"
@@ -447,13 +447,13 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateNationality(e.target.value)}}
         />
-        <div className="error-message" >{nationalityError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{nationalityError}</div>
         </div>
 
-        <div className="form-group">
+        <div className="flex flex-col mb-[15px] flex-[3]">
 
-        <label htmlFor="edlevel">Education Level: </label>
-        <select
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="edlevel">Education Level: </label>
+        <select className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
         name="edlevel"
           value={formData.edlevel}
           onChange={(e) => {handleChange(e)
@@ -467,14 +467,14 @@ setFormData({
           <option value="master's degree">Master's Degree</option>
           <option value="phd">PhD</option>
         </select>
-        <div className="error-message" >{edlevelError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{edlevelError}</div>
         </div>
       </div>
 
-      <div className="row">
-      <div className="form-group">
-        <label htmlFor="study">major: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+      <div className="flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="study">major: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="major"
           placeholder="e.g.,computer science"
@@ -482,13 +482,13 @@ setFormData({
           onChange={(e) => {handleChange(e)
                            validateMajor(e.target.value)}}
         />
-        <div className="error-message" >{majorError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{majorError}</div>
         </div>
 
-        <div className="form-group">
+        <div className="flex flex-col mb-[15px] flex-[3]">
 
-        <label htmlFor="gpa">gpa: </label>
-        <input
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="gpa">gpa: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="gpa"
           placeholder="e.g.,3.8"
@@ -496,14 +496,14 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateGpa(e.target.value)}}
         />
-        <div className="error-message" >{gpaError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{gpaError}</div>
         </div>
       </div>
 
-      <div className="row">
-      <div className="form-group">
-        <label htmlFor="email">Email Address: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+      <div className="flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="email">Email Address: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="email"
           name="email"
           placeholder="Email"
@@ -511,12 +511,12 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateEmail(e.target.value)}}
         />
-        <div className="error-message" >{emailError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{emailError}</div>
 </div>
         
-<div className=" form-group ">
-        <label htmlFor="school">school: </label>
-        <input
+<div className=" flex flex-col mb-[15px] flex-[3] ">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="school">school: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="school"
           placeholder="school"
@@ -524,14 +524,14 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateSchool(e.target.value)}}
         />
-        <div className="error-message" >{schoolError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{schoolError}</div>
       </div>
       </div>
 
-      <div className="row">
-      <div className=" form-group ">
-        <label htmlFor="phone">mobile no: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+      <div className=" flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="phone">mobile no: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="tel"
           name="phone"
           placeholder="+1(555)123-4567"
@@ -539,12 +539,12 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validatePhone(e.target.value)}}
         />
-        <div className="error-message" >{phoneError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{phoneError}</div>
         </div>
 
-        <div className=" form-group ">
-        <label htmlFor="street">street: </label>
-        <input
+        <div className=" flex flex-col mb-[15px] flex-[3] ">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="street">street: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="street"
           placeholder="123 main street"
@@ -552,14 +552,14 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateStreet(e.target.value)}}
         />
-        <div className="error-message" >{streetError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{streetError}</div>
          </div>
       </div>
 
-      <div className="row">
-      <div className=" form-group ">
-        <label htmlFor="city">city: </label>
-        <input
+      <div className="flex gap-5 max-[600px]:flex-col">
+      <div className=" flex flex-col mb-[15px] flex-[3]">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="city">city: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="city"
           placeholder="enter city"
@@ -567,12 +567,12 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateCity(e.target.value)}}
         />
-        <div className="error-message" >{cityError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{cityError}</div>
         </div>
 
-        <div className=" form-group ">
-        <label htmlFor="state">state: </label>
-        <input
+        <div className=" flex flex-col mb-[15px] flex-[3] ">
+        <label className ="mb-[5px] font-bold text-[#333] flex justify-start "htmlFor="state">state: </label>
+        <input className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
           type="text"
           name="state"
           placeholder="enter state"
@@ -580,11 +580,12 @@ setFormData({
           onChange={(e) => {handleChange(e)
                             validateState(e.target.value)}}
         />
-        <div className="error-message" >{stateError}</div>
+        <div className="text-red-500 text-[0.9em] min-h-[1em]" >{stateError}</div>
         </div>
       </div>
 
-      <button type="submit">
+      <button className="w-full p-3 bg-[#4b6cb7] text-white border-0 rounded-[5px] text-[1.1rem] cursor-pointer transition-[background] duration-300 ease-in-out mb-[30px] hover:bg-[#182848]"
+      type="submit">
 {editIndex !== null ? "Update": "Register"}
 </button>
     </form>
