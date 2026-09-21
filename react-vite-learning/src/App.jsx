@@ -6,7 +6,7 @@ function App() {
   
   return (
 
-    <div style={{ display: "flex", gap: "30px" }}>
+    <div className="flex gap-[30px]">
       <UserForm/>
 
       <UserTable/>
