@@ -8,7 +8,7 @@ const {users,deleteUser,editUser} = useContext(UserContext);
 
 
     return (
-      <div className="w-[1000px] overflow-x-auto">
+      <div className="w-[730px] overflow-x-auto min-[768px]:max-[1024px]:w-[1000px] min-[412px]:max-[915px]:w-[1000px]">
       <table className="w-max border-collapse bg-white">
         <thead>
           <tr>
@@ -52,9 +52,9 @@ const {users,deleteUser,editUser} = useContext(UserContext);
               <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.street}</td>
               <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">{user.state}</td>
               <td className="py-2 px-3 border border-red-500 whitespace-nowrap ">
-                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer" onClick={()=> editUser(index)}>Edit</button>
+                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer bg-[#4b6cb7]" onClick={()=> editUser(index)}>Edit</button>
                   <br></br>
-                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer" onClick={() => deleteUser(index)}>Delete</button>
+                <button className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer bg-[#4b6cb7]" onClick={() => deleteUser(index)}>Delete</button>
               </td>
             </tr>
           ))}

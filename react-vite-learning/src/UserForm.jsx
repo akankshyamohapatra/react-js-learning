@@ -361,7 +361,7 @@ setFormData({
   };
 
   return (
-    <div className="bg-white px-10 py-[30px] rounded-[10px] shadow-lg max-w-[800px] w-full">
+    <div className="bg-white px-10 py-[30px] rounded-[10px] shadow-lg max-w-[1000px] w-[700px] min-[412px]:max-[915px]:w-[970px]">
     <form onSubmit={handleSubmit}>
       <h2 className="text-[24px] leading-[118%] tracking-[-0.24px] mb-5 text-center max-[1024px]:text-[20px]">Student Registration Form</h2>
 
