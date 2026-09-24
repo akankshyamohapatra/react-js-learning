@@ -1,12 +1,20 @@
-import { useState, useEffect,useContext} from "react";
+import { useState, useEffect} from "react";
 import "./index.css";
-import { UserContext } from "./context/userContext";
+import useUserStore from "./store/userStore";
 
 function UserForm() {
 
-  const {saveUser,users,editIndex}= useContext(UserContext)
+  const users=useUserStore(
+    (state) => state.users
+  );
 
+  const saveUser=useUserStore(
+    (state) => state.saveUser
+  );
 
+const editIndex=useUserStore(
+  (state) => state.editIndex
+);
 
 
 
