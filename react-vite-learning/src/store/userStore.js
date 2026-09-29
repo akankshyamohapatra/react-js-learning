@@ -4,6 +4,19 @@ const useUserStore = create((set) => ({
   users: [],
   editIndex: null,
 
+  darkMode:false,
+
+
+  toggleTheme: () =>
+set((state) =>({
+   darkMode: !state.darkMode, 
+})),
+
+
+
+
+
+
   saveUser: (formData) =>
     set((state) => {
       if (state.editIndex !== null) {
@@ -21,20 +34,15 @@ const useUserStore = create((set) => ({
       };
     }),
 
+  deleteUser: (index) =>
+    set((state) => ({
+      users: state.users.filter((_, i) => i !== index),
+    })),
 
-    deleteUser:(index) =>
-        set((state) =>({
-users:state.users.filter((_,i)=> i !== index),
-        })),
-
-
-        editUser:(index) =>
-            set({
-                editIndex:index,
-            }),
-
+  editUser: (index) =>
+    set({
+      editIndex: index,
+    }),
 }));
-
-
 
 export default useUserStore;
