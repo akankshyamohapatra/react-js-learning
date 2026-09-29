@@ -371,7 +371,7 @@ setFormData({
   };
 
   return (
-    <div className={`px-10 py-[30px] rounded-[10px] shadow-lg max-w-[1000px] w-[700px] min-[412px]:max-[915px]:w-[970px] ${darkMode?"bg-gray-800 text-white": "bg-white text-black" }`}>
+    <div className={`px-10 py-[30px] rounded-[10px] shadow-lg max-w-[1000px] w-[700px] min-[412px]:max-[915px]:w-[970px] ${darkMode?"bg-gray-800 text-white border-2 border-white": "bg-white text-black" }`}>
     <form onSubmit={handleSubmit}>
       <h2 className="text-[24px] leading-[118%] tracking-[-0.24px] mb-5 text-center max-[1024px]:text-[20px]">Student Registration Form</h2>
 
