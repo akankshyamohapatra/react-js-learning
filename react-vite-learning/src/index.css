@@ -1,3 +1,29 @@
 
  @import "tailwindcss" ;
 
+:root{
+  --bg:white;
+  --text:black;
+  --primary:rgb(10, 10, 120);
+}
+
+
+.theme-dark{
+  --bg:black;
+  --text:white;
+  --primary:rgb(62, 60, 60);
+}
+
+
+.theme-green{
+  --bg:green;
+  --text:white;
+  --primary:rgb(140, 196, 140);
+}
+
+
+.theme-pink{
+  --bg:rgb(187, 17, 187);
+  --text:white;
+  --primary:rgb(190, 122, 190);
+}

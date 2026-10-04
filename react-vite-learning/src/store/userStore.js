@@ -4,13 +4,13 @@ const useUserStore = create((set) => ({
   users: [],
   editIndex: null,
 
-  darkMode:false,
+  theme: "light",
 
 
-  toggleTheme: () =>
-set((state) =>({
-   darkMode: !state.darkMode, 
-})),
+  setTheme:(newTheme) =>
+    set({
+        theme: newTheme,
+    }),
 
 
 

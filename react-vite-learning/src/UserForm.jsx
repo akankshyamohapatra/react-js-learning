@@ -16,7 +16,7 @@ const editIndex=useUserStore(
   (state) => state.editIndex
 );
 
-const darkMode=useUserStore((state) => state.darkMode);
+
 
 
 
@@ -371,16 +371,18 @@ setFormData({
   };
 
   return (
-    <div className={`px-10 py-[30px] rounded-[10px] shadow-lg max-w-[1000px] w-[700px] min-[412px]:max-[915px]:w-[970px] ${darkMode?"bg-gray-800 text-white border-2 border-white": "bg-white text-black" }`}>
+    <div className="px-10 py-[30px] rounded-[10px] shadow-lg max-w-[1000px] w-[700px] min-[412px]:max-[915px]:w-[970px] bg-[var(--bg)] text-[var(--text)]">
     <form onSubmit={handleSubmit}>
       <h2 className="text-[24px] leading-[118%] tracking-[-0.24px] mb-5 text-center max-[1024px]:text-[20px]">Student Registration Form</h2>
 
       <div className="flex gap-5 max-[600px]:flex-col">
 
         <div className="flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="fname" ${darkMode? "text-white":"text-[#333]"}`}>First Name: </label>
+        <label className ="mb-[5px] font-bold  flex justify-start  text-[var(--text)]"
+        htmlFor="fname"
+        >First Name: </label>
 
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]" 
           type="text"
           name="fname"
           placeholder="First Name"
@@ -395,9 +397,11 @@ setFormData({
 
 
         <div className=" flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="lname" ${darkMode? "text-white":"text-[#333]"}`}>Last Name: </label>
+        <label className ="mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="lname"
+        >Last Name: </label>
 
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="lname"
           placeholder="Last Name"
@@ -412,8 +416,10 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
       <div className=" flex flex-col mb-[15px] flex-[3] ">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="dob" ${darkMode? "text-white":"text-[#333]"}`}>Date of Birth: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="dob"
+        >Date of Birth: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="date"
           name="dob"
           placeholder="dd/mm/yy"
@@ -426,7 +432,9 @@ setFormData({
         
         
         <div className=" flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="gender" ${darkMode? "text-white":"text-[#333]"}`}>Gender: </label>
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="gender"
+        >Gender: </label>
 
         <select className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
         name="gender"
@@ -448,8 +456,9 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
         <div className="flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="nationality" ${darkMode? "text-white":"text-[#333]"}`}>Nationality: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="nationality">Nationality: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="nationality"
           placeholder="nationality"
@@ -462,7 +471,8 @@ setFormData({
 
         <div className="flex flex-col mb-[15px] flex-[3]">
 
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="edlevel" ${darkMode? "text-white":"text-[#333]"}`}>Education Level: </label>
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="edlevel">Education Level: </label>
         <select className="p-[10px] border-2 border-black rounded-[5px] text-base box-border w-full mb-[10px]"
         name="edlevel"
           value={formData.edlevel}
@@ -483,8 +493,10 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
       <div className="flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="study" ${darkMode? "text-white":"text-[#333]"}`}>major: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="study"
+        >major: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="major"
           placeholder="e.g.,computer science"
@@ -497,8 +509,9 @@ setFormData({
 
         <div className="flex flex-col mb-[15px] flex-[3]">
 
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="gpa" ${darkMode? "text-white":"text-[#333]"}`}>gpa: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="gpa">gpa: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="gpa"
           placeholder="e.g.,3.8"
@@ -512,8 +525,9 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
       <div className="flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="email" ${darkMode? "text-white":"text-[#333]"}`}>Email Address: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="email">Email Address: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="email"
           name="email"
           placeholder="Email"
@@ -525,8 +539,9 @@ setFormData({
 </div>
         
 <div className=" flex flex-col mb-[15px] flex-[3] ">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="school" ${darkMode? "text-white":"text-[#333]"}`}>school: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="school">school: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="school"
           placeholder="school"
@@ -540,8 +555,9 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
       <div className=" flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="phone" ${darkMode? "text-white":"text-[#333]"}`}>mobile no: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="phone">mobile no: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="tel"
           name="phone"
           placeholder="+1(555)123-4567"
@@ -553,8 +569,9 @@ setFormData({
         </div>
 
         <div className=" flex flex-col mb-[15px] flex-[3] ">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="street" ${darkMode? "text-white":"text-[#333]"}`}>street: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="street">street: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="street"
           placeholder="123 main street"
@@ -568,8 +585,9 @@ setFormData({
 
       <div className="flex gap-5 max-[600px]:flex-col">
       <div className=" flex flex-col mb-[15px] flex-[3]">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="city" ${darkMode? "text-white":"text-[#333]"}`}>city: </label>
-        <input className={`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="city">city: </label>
+        <input className="p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="city"
           placeholder="enter city"
@@ -581,8 +599,9 @@ setFormData({
         </div>
 
         <div className=" flex flex-col mb-[15px] flex-[3] ">
-        <label className ={`mb-[5px] font-bold  flex justify-start "htmlFor="state" ${darkMode? "text-white":"text-[#333]"}`}>state: </label>
-        <input className = {`p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] ${ darkMode? "bg-gray-700 text-white border-gray-500" : "bg-white text-black border-black"}`}
+        <label className = "mb-[5px] font-bold  flex justify-start text-[var(--text)]" 
+        htmlFor="state">state: </label>
+        <input className = "p-[10px] border-2 rounded-[5px] text-base box-border w-full mb-[10px] bg-[var(--bg)] text-[var(--text)] border-[var(--primary)]"
           type="text"
           name="state"
           placeholder="enter state"
