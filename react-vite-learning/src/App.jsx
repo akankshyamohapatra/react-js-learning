@@ -5,6 +5,7 @@ import useUserStore from "./store/userStore";
 
 
 
+
 function App() {
 
   const theme =useUserStore((state) => state.theme);
@@ -13,6 +14,7 @@ function App() {
   return (
    //body 
 <div className={`theme-${theme} font-sans m-0 p-0 flex justify-start items-start min-h-screen bg-[var(--primary)] text-white`}>  
+
 
   <div>
 <select
