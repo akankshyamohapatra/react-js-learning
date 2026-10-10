@@ -1,7 +1,9 @@
 import useUserStore from "./store/userStore";
+import { useState } from "react";
 //shadcn components
 import { Button } from "./components/ui/button";
 import { Table,TableBody,TableCell,TableHead,TableHeader,TableRow } from "./components/ui/table";
+import { Input } from "./components/ui/input";
 
 function UserTable() {
   const users = useUserStore((state) => state.users);
@@ -10,10 +12,44 @@ function UserTable() {
 
   const editUser = useUserStore((state) => state.editUser);
 
+  const [search , setSearch]=useState("");
+
+  const filteredUsers=users.filter((user) =>
+  [
+user.fname,
+user.lname,
+user.email,
+user.phone,
+user.gender,
+user.nationality,
+user.city,
+user.state,
+user.edlevel,
+user.gpa,
+user.school,
+user.dob,
+user.major,
+user.street,
+  ].some((value) =>
+  String(value ?? "").toLowerCase().includes(search.toLowerCase())
+  )
+  
+  );
+
   
 
   return (
     <div className="w-[630px] overflow-x-auto min-[768px]:max-[1024px]:w-[1000px] min-[412px]:max-[915px]:w-[1000px]">
+
+<Input
+type="text"
+placeholder="Search users..."
+value={search}
+onChange={(e) => setSearch(e.target.value)}
+className="mb-4 w-full mt-4 border-[var(--bg)]"
+/>
+
+
       <Table className="w-max border-collapse bg-[var(--bg)] text-[var(--text)]">
         <TableHeader>
           <TableRow>
@@ -70,7 +106,7 @@ function UserTable() {
         </TableHeader>
 
         <TableBody>
-          {users.map((user, index) => (
+          {filteredUsers.map((user, index) => (
             <TableRow key={index}>
               <TableCell className="py-2 px-3 border whitespace-nowrap border-[var(--primary)]">
                 {index + 1}
