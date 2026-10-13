@@ -1,5 +1,5 @@
 import useUserStore from "./store/userStore";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 //shadcn components
 import { Button } from "./components/ui/button";
 import { Table,TableBody,TableCell,TableHead,TableHeader,TableRow } from "./components/ui/table";
@@ -14,7 +14,23 @@ function UserTable() {
 
   const [search , setSearch]=useState("");
 
-  const filteredUsers=users.filter((user) =>
+  const [sortOrder, setSortOrder] = useState(null);
+
+
+const handleSort = () => {
+  setSortOrder((current) =>
+  current === null ? "asc" : current === "asc" ? "desc" : null
+  )
+}
+
+const sortedUsers= useMemo(() => {
+
+return users
+.map((user,index) => ({
+user,
+originalIndex:index,
+}))
+.filter(({user}) =>
   [
 user.fname,
 user.lname,
@@ -33,8 +49,22 @@ user.street,
   ].some((value) =>
   String(value ?? "").toLowerCase().includes(search.toLowerCase())
   )
-  
-  );
+  )
+.sort((a,b) => {
+if(sortOrder === null) return a.originalIndex - b.originalIndex;
+
+const result = (a.user.fname ?? ""). localeCompare(
+  b.user.fname ?? "",
+  undefined,
+  {sensitivity: "base"}
+);
+
+return sortOrder === "asc" ? result : -result;
+
+
+});
+}, [users, search, sortOrder]);
+
 
   
 
@@ -58,7 +88,16 @@ className="mb-4 w-full mt-4 border-[var(--bg)]"
             </TableHead>
 
             <TableHead className= "py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
+              <Button variant="ghost" onClick={handleSort}>
               First Name
+              {sortOrder === "asc"
+              ? " ↑ "
+              : sortOrder === "desc"
+              ? " ↓ "
+              : " ↕ "
+              }
+              </Button>
+              
             </TableHead>
             <TableHead className= "py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
               Last Name
@@ -106,7 +145,7 @@ className="mb-4 w-full mt-4 border-[var(--bg)]"
         </TableHeader>
 
         <TableBody>
-          {filteredUsers.map((user, index) => (
+          {sortedUsers.map(({user , originalIndex}, index) => (
             <TableRow key={index}>
               <TableCell className="py-2 px-3 border whitespace-nowrap border-[var(--primary)]">
                 {index + 1}
@@ -157,14 +196,14 @@ className="mb-4 w-full mt-4 border-[var(--bg)]"
               <TableCell className="py-2 px-3 border whitespace-nowrap border-[var(--primary)]">
                 <Button
                   className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer bg-[#4b6cb7]"
-                  onClick={() => editUser(index)}
+                  onClick={() => editUser(originalIndex)}
                 >
                   Edit
                 </Button>
                 <br></br>
                 <Button
                   className="py-1 px-2 text-[0.9rem] m-[2px] border-0 rounded-[4px] cursor-pointer bg-[#4b6cb7]"
-                  onClick={() => deleteUser(index)}
+                  onClick={() => deleteUser(originalIndex)}
                 >
                   Delete
                 </Button>
