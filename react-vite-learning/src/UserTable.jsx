@@ -14,13 +14,27 @@ function UserTable() {
 
   const [search , setSearch]=useState("");
 
-  const [sortOrder, setSortOrder] = useState(null);
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction:null,
+  })
 
 
-const handleSort = () => {
-  setSortOrder((current) =>
-  current === null ? "asc" : current === "asc" ? "desc" : null
-  )
+const handleSort = (key) => {
+  setSortConfig((current) => {
+
+    if(current.key !== key){
+      return {key, direction: "asc"};
+    }
+
+
+    if(current.direction === "asc"){
+      return {key, direction:"desc"};
+    }
+
+    return {key: null , direction: null};
+
+  })
 }
 
 const sortedUsers= useMemo(() => {
@@ -51,19 +65,31 @@ user.street,
   )
   )
 .sort((a,b) => {
-if(sortOrder === null) return a.originalIndex - b.originalIndex;
 
-const result = (a.user.fname ?? ""). localeCompare(
-  b.user.fname ?? "",
+  const {key, direction} = sortConfig;
+
+  if(!key || !direction){
+ return a.originalIndex - b.originalIndex;
+  }
+
+  let result;
+
+  if(key === "serialNo"){
+    result = a.originalIndex - b.originalIndex;
+  } 
+  else{
+ result = String(a.user[key] ?? ""). localeCompare(
+String(b.user[key] ?? ""),
   undefined,
-  {sensitivity: "base"}
+  {sensitivity: "base", numeric: true}
 );
+  }
 
-return sortOrder === "asc" ? result : -result;
+return direction === "asc" ? result : -result;
 
 
 });
-}, [users, search, sortOrder]);
+}, [users, search, sortConfig]);
 
 
   
@@ -84,23 +110,50 @@ className="mb-4 w-full mt-4 border-[var(--bg)]"
         <TableHeader>
           <TableRow>
             <TableHead className="py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
+            <Button variant="ghost" onClick={() => handleSort("serialNo") }>
               Serial No.
+              {
+              sortConfig.key === "serialNo"
+              ? sortConfig.direction === "asc"
+              ? " ↑"
+              : sortConfig.direction === "desc"
+              ? " ↓"
+              : " ↕"
+            : " ↕"
+              }
+              </Button>
+             
             </TableHead>
 
             <TableHead className= "py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
-              <Button variant="ghost" onClick={handleSort}>
+              <Button variant="ghost" onClick={() => handleSort("fname") }>
               First Name
-              {sortOrder === "asc"
-              ? " ↑ "
-              : sortOrder === "desc"
-              ? " ↓ "
-              : " ↕ "
+              {
+              sortConfig.key === "fname"
+              ? sortConfig.direction === "asc"
+              ? " ↑"
+              : sortConfig.direction === "desc"
+              ? " ↓"
+              : " ↕"
+            : " ↕"
               }
               </Button>
               
             </TableHead>
             <TableHead className= "py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
+
+            <Button variant="ghost" onClick={() => handleSort("lname") }>
               Last Name
+              {
+              sortConfig.key === "lname"
+              ? sortConfig.direction === "asc"
+              ? " ↑"
+              : sortConfig.direction === "desc"
+              ? " ↓"
+              : " ↕"
+            : " ↕"
+              }
+              </Button>
             </TableHead>
             <TableHead className= "py-2 px-3 border whitespace-nowrap border-[var(--primary)] text-[var(--text)]">
               gender
@@ -148,7 +201,9 @@ className="mb-4 w-full mt-4 border-[var(--bg)]"
           {sortedUsers.map(({user , originalIndex}, index) => (
             <TableRow key={index}>
               <TableCell className="py-2 px-3 border whitespace-nowrap border-[var(--primary)]">
-                {index + 1}
+              originalIndex:{originalIndex + 1}<br></br>
+              index: {index + 1}
+                
               </TableCell>
 
               <TableCell className="py-2 px-3 border whitespace-nowrap border-[var(--primary)]">
